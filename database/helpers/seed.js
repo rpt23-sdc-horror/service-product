@@ -4,28 +4,29 @@ var generator = require('./generator.js');
 
 const seed = (callback) => {
   let products = [];
-  Array(100).fill().map((_, i) => {
+  let limit = 10000000;
+  Array(limit).fill().map((_, i) => {
     products.push({
-      productId: i === 0 ? 100 : i,
-      name: generator.getName(i),
-      gender: generator.getGender(i),
+      productId: i === 0 ? limit : i,
+      name: generator.getName(),
+      gender: generator.getGender(),
       category: generator.getCategory(),
       styles: [
         {
-          styleId: '001',
-          price: generator.getPrice(i),
-          options: generator.getOptions(i)
+          styleId: (i === 0 ? limit : i) * 3,
+          price: generator.getPrice(),
+          options: generator.getOptions(),
         },
         {
-          styleId: '002',
-          price: generator.getPrice(i),
-          options: generator.getOptions(i)
+          styleId: (i === 0 ? limit : i) * 3 + 1,
+          price: generator.getPrice(),
+          options: generator.getOptions(),
 
         },
         {
-          styleId: '003',
-          price: generator.getPrice(i),
-          options: generator.getOptions(i)
+          styleId: (i === 0 ? limit : i) * 3 + 2,
+          price: generator.getPrice(),
+          options: generator.getOptions(),
         }]
     });
   });
@@ -39,6 +40,4 @@ const seed = (callback) => {
   });
 };
 
-
 module.exports = seed;
-
